@@ -1,0 +1,40 @@
+{% extends 'controleacesso/base.html' %}
+{% block conteudo %}
+<h2 class="font-weight-light pb-3"> Chaves </h2>
+
+{% if lista_chaves %}
+   <table class="table">
+      <tr>
+          <th> Sala </th>
+          <th> Prédio </th>
+          <th> Cod. RFID </th>
+          <th> Descrição </th>
+          <th> Portaria </th>
+          <th>  Emprestada</th>
+          <th>  Ações </th>
+      </tr>
+
+      {% for c in lista_chaves %}
+        <tr>
+            <td> {{c.sala}}</td>
+            <td> {{c.predio}}</td>
+            <td> {{c.cod_RFID}}</td>
+            <td> {{c.descricao}}</td>
+            <td> {{c.portaria.first_name}}</td>
+            <td>
+            {% if c.emprestada %}
+            sim 
+            {% else %}
+            não
+            {% endif %}
+            </td>
+            <td><a href="/controleacesso/chaves/{{c.id}}"> Ver Histórico </a></td>
+        </tr>    
+      {% endfor %}
+   </table>
+   
+{% else %}
+   <p>Nenhuma chave cadastrada.</p>
+{% endif %}
+
+{% endblock %}

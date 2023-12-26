@@ -1,0 +1,13 @@
+{% extends 'controleacesso/base.html' %}
+
+{%  block conteudo %}
+
+<h2 class="font-weight-light pb-3"> Entrar na conta </h2>
+
+<form action="/controleacesso/login/" method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Entrar" />
+</form>
+
+{% endblock %}

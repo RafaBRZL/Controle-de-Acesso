@@ -1,0 +1,21 @@
+{% extends 'controleacesso/base.html' %}
+{% block conteudo %}
+<div class="border p-4 shadow">
+    <h2>{{titulo}}</h2>
+<p> 
+    {% if id_chave %}
+       <form action="/controleacesso/solicitar_pessoa/{{id_chave}}/" method="POST">
+    {% else %}
+    <form action="/controleacesso/avaliar_codigo/" method="POST">
+        {% endif %}
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Enviar" />
+    </form>
+    
+</p>
+</div>
+{% endblock %}
+
+
+

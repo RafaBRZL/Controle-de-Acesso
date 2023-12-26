@@ -1,0 +1,35 @@
+{% extends 'controleacesso/base.html' %}
+{% block conteudo %}
+<h2 class="font-weight-light pb-3"> Histórico da Chave da {{ c }} </h2>
+
+
+{% if lista_emprestimos %}
+   <table class="table">
+      <tr>
+          <th> Data de Retirada </th>
+          <th> Data de Entrega </th>
+          <th> Pessoa </th>
+
+      </tr>
+
+      {% for e in lista_emprestimos %}
+        <tr>
+            <td> {{e.data_Retirada}}</td>
+            <td>
+            {% if e.data_Entrega %}
+            {{e.data_Entrega}}
+            {% else %}
+            ainda não foi devolvida
+            {% endif %}
+            </td>
+            
+            <td> {{e.pessoa}}</td>
+        </tr>    
+      {% endfor %}
+   </table>
+   
+{% else %}
+   <p>Esta Chave não tem nenhum histórico.</p>
+{% endif %}
+ 
+{% endblock %}
